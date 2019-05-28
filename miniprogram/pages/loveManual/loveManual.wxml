@@ -1,0 +1,4 @@
+<!--miniprogram/pages/loveManual/loveManual.wxml-->
+<view class="record">心跳，让我记录你的第一次！</view>
+<button>心动的100次!</button>
+<button>心碎的100次!</button>

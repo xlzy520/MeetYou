@@ -1,0 +1,40 @@
+{
+	"cloud": true,
+	"pages": [
+		"pages/meet/meet",
+		"pages/add/add",
+		"pages/weather/weather"
+		
+	],
+	"permission": {
+		"scope.userLocation": {
+			"desc": "Meetyo请求使用您的位置信息以便提供天气数据！"
+		}
+	},
+	"window": {
+		"backgroundColor": "#F6F6F6",
+		"backgroundTextStyle": "dark",
+		"navigationBarBackgroundColor": "white",
+		"navigationBarTitleText": "Meet You",
+		"navigationBarTextStyle": "black"
+	},
+	"tabBar": {
+		"color": "#8a8a8a",
+		"selectedColor": "#1aad19",
+		"list": [
+			{
+				"pagePath": "pages/meet/meet",
+				"text": "遇见",
+				"iconPath": "images/meet.png",
+				"selectedIconPath": "images/selectedmeet.png"
+			},
+			{
+				"pagePath": "pages/weather/weather",
+				"text": "看天气",
+				"iconPath": "images/weather.png",
+				"selectedIconPath": "images/selectedweather.png"
+			}
+		]
+	},
+	"sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,65 @@
+<!--miniprogram/pages/meetYou/meetYou.wxml-->
+<wxs module="filters" src="../num.wxs"></wxs>
+<view class="content">
+    <view class="nav-view {{navStyle}}">
+        <view class="nav-banner {{navActive==0?'active':''}}" data-index="0" bindtap="navTap">
+            <text>即将来临</text>
+        </view>
+        <view class="nav-banner {{navActive==1?'active':''}}" data-index="1" bindtap="navTap">
+            <text>昨日记忆</text>
+        </view>
+        <view class="line  {{navActive==1?'active':''}}"></view>
+    </view>
+    <view class="lasting-div {{navActive==0?'active':''}}">
+        <!--列表展示-->
+        <view class="lists" wx:if="{{listData}}">
+            <view wx:if="{{item.lasting_ed}}" class="list-model {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" wx:key="index" wx:for="{{listData}}" style="background-color: {{backgroundColorArr[index%9]}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+                <view class="list-content">
+                    <view class="title-view" data-index="{{index}}" data-detail="{{item}}">
+                        <text class="title">{{item.title}}</text>
+                    </view>
+                    <view class="date-view" data-index="{{index}}" data-detail="{{item}}">
+                        <text>距离：{{item.date}}</text>
+                    </view>
+                    <view class="last-view" data-index="{{index}}" data-detail="{{item}}">
+                        <text class="left-text">还有</text>
+                        <text class="center-text">{{ filters.toFix(item.set_time/86400000 - local_date/86400000)}}</text>
+                        <text class="right-text">天</text>
+                    </view>
+                </view>
+                <view class="delete-view" data-id="{{item._id}}" data-parentid="{{item.parentID}}" data-islasted="{{item.isLasted}}" data-isrepeat="{{item.isRepeat}}" catchtap="deleteTap">
+                    <image class="delete-icon" mode="aspectFill" src="../../images/delete.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="lasted-view {{navActive==1?'active':''}} {{isShow? '' :'hide' }}">
+        <!--列表展示-->
+        <view class="lists" wx:if="{{listData}}">
+            <view wx:if="{{!item.lasting_ed}}" class="list-model {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" wx:key="index" wx:for="{{listData}}" style="background-color: {{backgroundColorArr[index%9]}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+                <view class="list-content">
+                    <view class="title-view" data-index="{{index}}" data-detail="{{item}}">
+                        <text class="title">{{item.title}}</text>
+                    </view>
+                    <view class="date-view" data-index="{{index}}" data-detail="{{item}}">
+                        <text>距离：{{item.date}}</text>
+                    </view>
+                    <view class="last-view" data-index="{{index}}" data-detail="{{item}}">
+                        <text class="left-text">已过去</text>
+                        <text class="center-text">{{filters.toFix(local_date/86400000-item.set_time/86400000)}}</text>
+                        <text class="right-text">天</text>
+                    </view>
+                </view>
+                <view class="delete-view" data-id="{{item._id}}" data-parentid="{{item.parentID}}" catchtap="deleteTap">
+                    <image class="delete-icon" mode="aspectFill" src="../../images/delete.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 添加按钮 -->
+    <view class="add-view">
+        <button class="add-btn" bindtap="toAdd">
+            <image class="add-image" mode="aspectFill" src="../../images/add.png"></image>
+        </button>
+    </view>
+</view>
