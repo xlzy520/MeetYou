@@ -1,29 +1,27 @@
 <view>
-  <!-- 主题 -->
   <view class="title-view">
-    <input class="title-input" disabled="{{fromPage=='detail'?true: false}}" bindinput="bindTitle" placeholder="我的主题是..." auto-focus value="{{title}}"/>
+    <textarea class="title-input" disabled="{{fromPage==='detail'}}"
+              bindinput="bindTitle" placeholder="我的主题..."
+              auto-focus value="{{title}}"/>
   </view>
   <!-- 倒数日日期 -->
   <view class="date-view">
-    <picker mode="date" disabled="{{fromPage=='detail'?true: false}}"  value="{{date}}" bindchange="bindDateChange" start="1970-01-01">
+    <picker class="title-input" mode="date" disabled="{{fromPage==='detail'}}"  value="{{date}}"
+            bindchange="bindDateChange" start="1970-01-01">
       <view class="picker">
-        <text class="date-title">日期：</text>
+        <text class="date-title">选择日期：</text>
         <view>
           <text class="date-text">{{date}}</text>
         </view>
       </view>
     </picker>
   </view>
-  
-   <!-- 具体介绍 -->
-  <view class="des-view">
-    <view class="des-title"><text>详情：</text></view>
-    <view class="des">
-      <textarea value="{{des}}" class="des-textarea" bindinput="bindDes" auto-height placeholder="主题详细说明..." auto-focus="{{fromPage=='detail'?true: false}}"/>
-    </view>
-  </view>
-  <!-- 确定 -->
   <view class="button-view">
-    <button class="save-btn" type="default" size="default" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" hover-class="other-button-hover">确定</button>
+    <button class="save-btn" type="default" size="default" bindtap="saveDays"
+            hover-class="other-button-hover">确定</button>
+    <button wx:if="{{listID}}" class="delete-btn" type="default" size="default" bindtap="deleteTap"
+            hover-class="other-button-hover">删除</button>
+<!--    <button class="save-btn" type="default" size="default" open-type="getUserInfo" -->
+<!--            lang="zh_CN" bindgetuserinfo="onGotUserInfo" hover-class="other-button-hover">确定</button>-->
   </view>
 </view>

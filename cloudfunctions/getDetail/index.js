@@ -10,13 +10,9 @@ const db = cloud.database()
 exports.main = async (event, context) => {
   const {
     OPENID,
-    APPID,
-    UNIONID,
   } = cloud.getWXContext()
   try {
-    return await db.collection('days').where({
-      open_id: OPENID
-    }).get()
+    return await db.collection('days').doc(event.id).get()
   } catch (e) {
     console.error(e)
   }

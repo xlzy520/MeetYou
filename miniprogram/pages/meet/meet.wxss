@@ -3,90 +3,23 @@ page{
   background-color: #f0f0f0;
 }
 
-.nav-view{
-  position: fixed;
-  width: 100%;
-  height: 80rpx;
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  z-index: 9;
-}
-
-.nav-view-absolute{
-  position: absolute;
-}
-
-.nav-banner{
-  width: 50%;
-  height: 80rpx;
-  line-height: 80rpx;
-  text-align: center;
-  color: #333;
-  font-size: 28rpx;
-}
-
-.nav-banner.active{
-  color: #ee5e7b;
-  font-weight: bold;
-}
-
-.line{
-  position: absolute;
-  left: 128rpx;
-  bottom: 0;
-  width: 120rpx;
-  height: 6rpx;
-  background-color: #ee5e7b;
-  transition: all 0.3s;
-}
-
-.line.active{
-  left: 505rpx;
-}
-
-.lasting-div,.lasted-view{
-  padding-top: 80rpx;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 750rpx;
-  transition: transform 0.3s;
-}
-.lasting-div {
-  transform: translateX(-750rpx);
-}
-
-.lasting-div.active{
-  transform: translateX(0rpx);
-}
-
-.lasted-view{
-  transform: translateX(750rpx);
-}
-
-.lasted-view.active{
-  transform: translateX(0rpx);
-}
-
-.lasted-view.hide{
-  display: none;
-}
-
 .no-lists{
-  padding-top: 170rpx;
+  padding-top: 360rpx;
   text-align: center;
-  font-size: 28rpx;
+  font-size: 28px;
   color: #999;
+}
+.content{
+	margin-bottom: 160rpx;
 }
 
 .list-model{
   width: 750rpx;
-  height: 420rpx;
   font-size: 0;
   display: flex;
   justify-content: space-between;
   overflow: hidden;
+	margin-bottom: 30rpx;
 }
 .list-content{
   width: 750rpx;
@@ -95,28 +28,6 @@ page{
   -webkit-transform: translateX(160rpx);
   transform: translateX(160rpx);
   margin-left: -160rpx;
-}
-.delete-view{
-  width: 160rpx;
-  height: 420rpx;
-  background-color: #fff;
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
-  -webkit-transform: translateX(160rpx);
-  transform: translateX(160rpx);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.delete-icon{
-  width: 60rpx;
-  height: 60rpx;
-}
-
-.touch-move-active .list-content,.touch-move-active .delete-view {
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
 }
 
 .list-model .title-view{
@@ -155,25 +66,23 @@ page{
   position: relative;
   font-size: 28rpx;
   text-align: center;
-  height: 180rpx;
+  height: 80rpx;
   color: #fff;
+}
+.last-view text{
+	height: 80rpx;
+	line-height: 80rpx;
 }
 .last-view .left-text {
   position: absolute;
   left: 40rpx;
-  height: 180rpx;
-  line-height: 180rpx;
 }
 .last-view .right-text {
   position: absolute;
   right: 40rpx;
-  height: 180rpx;
-  line-height: 180rpx;
 }
 .last-view .center-text {
-  height: 180rpx;
-  line-height: 180rpx;
-  font-size: 144rpx;
+  font-size: 44rpx;
 }
 .add-view {
   position: fixed;
@@ -202,28 +111,4 @@ page{
 .add-btn .add-image {
   width: 56rpx;
   height: 56rpx;
-}
-
-.invite-btn-view{
-  position: relative;
-  top: 0rpx;
-  padding-right: 30rpx;
-}
-
-.invite-btn{
-  position: absolute;
-  right: 30rpx;
-  width: 250rpx;
-  height: 50rpx;
-  line-height: 50rpx;
-  font-size: 24rpx;
-  color: #666;
-  border-radius: 25rpx;
-  padding: 0;
-  text-align: center;
-  background-color: #fff;
-}
-
-.invite-btn::after{
-  border: none;
 }

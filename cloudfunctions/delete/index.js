@@ -2,7 +2,7 @@
 const cloud = require('wx-server-sdk')
 
 cloud.init({
-	env: 'meetyou-f68599',
+  env: cloud.DYNAMIC_CURRENT_ENV,
 	traceUser: true,
 })
 const db = cloud.database()
@@ -14,7 +14,7 @@ exports.main = async (event, context) => {
 		UNIONID,
 	} = cloud.getWXContext()
 	try {
-		return await db.collection('Counters').where({
+		return await db.collection('days').where({
 			_id: event.id
 		}).remove()
 	} catch (e) {

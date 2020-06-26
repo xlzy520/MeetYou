@@ -1,32 +1,26 @@
 const cloud = require('wx-server-sdk')
 cloud.init({
-	env: 'meetyou-f68599',
-	traceUser: true,
+  env: cloud.DYNAMIC_CURRENT_ENV,
+  traceUser: true,
 })
 const db = cloud.database()
 const _ = db.command
 exports.main = async (event, context) => {
-	var n = Date.parse(new Date());
-	var date = new Date(n);
-	var t = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
-	let t2 = t.replace(/-/g, '/');
-	var local_date = new Date(t2).getTime();
-	const {
-		OPENID,
-		APPID,
-		UNIONID,
-	} = cloud.getWXContext()
-	try {
-		return await db.collection('Counters').where({
-			set_time: _.lte(local_date),
-			open_id: OPENID
-		})
-			.update({
-				data: {
-					lasting_ed: 0,
-				},
-			})
-	} catch (e) {
-		console.error(e)
-	}
+  const {
+    OPENID,
+  } = cloud.getWXContext()
+  try {
+    return await db.collection('days').where({
+        open_id: OPENID,
+        _id: event._id
+      })
+      .update({
+        data: {
+          title: event.title,
+          date: event.date
+        },
+      })
+  } catch (e) {
+    console.error(e)
+  }
 }
